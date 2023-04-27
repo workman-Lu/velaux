@@ -109,13 +109,15 @@ function renderAppNode(props: TreeGraphProps, id: string, node: GraphNode) {
       <div className={classNames('name')}>
         <span>{node.resource.name}</span>
       </div>
+      {node.resource.kind !== 'Secret' ?
       <div className={classNames('actions')}>
         <Dropdown trigger={<FaEllipsisV />}>
           <Menu>
             <Menu.Item onClick={() => props.onResourceDetailClick(node.resource)}>Detail</Menu.Item>
           </Menu>
         </Dropdown>
-      </div>
+      </div> : null
+      }
     </div>
   );
   return (
